@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 app = Flask(__name__)
 
@@ -16,6 +16,25 @@ def page_profile(id):
 @app.route('/list/')
 def page_cand_list():
     return render_template('cand_list.html', cands = candidates)
+
+@app.route('/search/')
+def page_search():
+    name = request.args.get("name")
+    found_list = []
+    if name:
+        if settings["case_sensitive"] == False:
+            name = name.lower()
+        for cand in candidates:
+            cand_name = cand["name"]
+            if settings["case_sensitive"] == False:
+                cand_name = cand_name.lower()
+            if name in cand_name:
+                found_list.append(cand)
+
+    return render_template('found_list.html', found_list = found_list, )
+
+
+
 
 def read_jsons():
     try:
