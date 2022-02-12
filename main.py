@@ -1,4 +1,17 @@
+from flask import Flask, render_template
 import json
+app = Flask(__name__)
+
+@app.route("/")
+def page_index():
+    return render_template('index.html', **settings)
+
+@app.route('/candidate/<id>')
+def page_profile(id):
+    for candidate in candidates:
+        if candidate['id'] == int(id):
+            return render_template('candidate.html', **candidate)
+    return "<b>Not found!</b>"
 
 def read_jsons():
     try:
@@ -22,11 +35,10 @@ def read_jsons():
         exit()
     return candidates, settings
 
-
-
 def main():
+    global candidates, settings
     candidates, settings = read_jsons()
-    print(candidates, "\n", settings)
+    app.run()
 
 if __name__ == "__main__":
    main()
