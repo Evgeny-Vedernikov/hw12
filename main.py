@@ -13,6 +13,10 @@ def page_profile(id):
             return render_template('candidate.html', **candidate)
     return "<b>Not found!</b>"
 
+@app.route('/list/')
+def page_cand_list():
+    return render_template('cand_list.html', cands = candidates)
+
 def read_jsons():
     try:
         with open('json/candidates.json', 'r', encoding='utf-8') as f:
