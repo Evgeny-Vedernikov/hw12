@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    main {
-        font-family: verdana;
-        width: 300px;
-        margin: 0 auto;
-    }
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block main %}
+
     {% if online %}
     <b>Приложение работает</b>
     {% else %}
@@ -20,5 +12,5 @@
     online: {{online}} <br>
     case_sensitive: {{case_sensitive}} <br>
     limit: {{limit}} </p>
-</body>
-</html>
+
+{% endblock %}
