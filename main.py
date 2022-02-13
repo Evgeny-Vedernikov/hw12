@@ -33,6 +33,20 @@ def page_search():
 
     return render_template('found_list.html', found_list = found_list, )
 
+@app.route('/skill/<skill>')
+def page_skill(skill):
+    found_list = []
+    if skill:
+        skill = skill.lower()
+        for cand in candidates:
+            if skill in cand['skills'].lower():
+                found_list.append(cand)
+                continue
+            if len(found_list) >= settings['limit']:
+                break
+
+    return render_template('found_skills.html', found_list = found_list)
+
 
 
 
