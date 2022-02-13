@@ -4,10 +4,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
+    settings = read_settings_json()
     return render_template('index.html', **settings)
 
 @app.route('/candidate/<id>')
 def page_profile(id):
+    candidates = read_candidates_json()
     for candidate in candidates:
         if candidate['id'] == int(id):
             return render_template('candidate.html', **candidate)
@@ -15,10 +17,13 @@ def page_profile(id):
 
 @app.route('/list/')
 def page_cand_list():
+    candidates = read_candidates_json()
     return render_template('cand_list.html', cands = candidates)
 
 @app.route('/search/')
 def page_search():
+    settings = read_settings_json()
+    candidates = read_candidates_json()
     name = request.args.get("name")
     found_list = []
     if name:
@@ -35,6 +40,8 @@ def page_search():
 
 @app.route('/skill/<skill>')
 def page_skill(skill):
+    settings = read_settings_json()
+    candidates = read_candidates_json()
     found_list = []
     if skill:
         skill = skill.lower()
@@ -48,19 +55,7 @@ def page_skill(skill):
     return render_template('found_skills.html', found_list = found_list)
 
 
-
-
-def read_jsons():
-    try:
-        with open('json/candidates.json', 'r', encoding='utf-8') as f:
-            candidates = json.load(f)
-    except IOError:
-        print("Нет файла json/candidates.json !")
-        exit()
-    except Exception:
-        print("Ошибка файле json/candidates.json !")
-        exit()
-
+def read_settings_json():
     try:
         with open('json/settings.json', 'r', encoding='utf-8') as f:
             settings = json.load(f)
@@ -70,11 +65,21 @@ def read_jsons():
     except json.decoder.JSONDecodeError:
         print("Ошибка файле json/settings.json !")
         exit()
-    return candidates, settings
+    return settings
+
+def read_candidates_json():
+    try:
+        with open('json/candidates.json', 'r', encoding='utf-8') as f:
+            candidates = json.load(f)
+    except IOError:
+        print("Нет файла json/candidates.json !")
+        exit()
+    except Exception:
+        print("Ошибка файле json/candidates.json !")
+        exit()
+    return candidates
 
 def main():
-    global candidates, settings
-    candidates, settings = read_jsons()
     app.run()
 
 if __name__ == "__main__":
