@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<ol>
+{% for cand in cands %}
+<li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a></li>
+{% endfor %}
+</ol>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+    {% if online %}
+    <b>Приложение работает</b>
+    {% else %}
+    <b>Приложение не работает</b>
+    {% endif %}
+
+    <p>System info:<br>
+    online: {{online}} <br>
+    case_sensitive: {{case_sensitive}} <br>
+    limit: {{limit}} </p>
+
+{% endblock %}
