@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block main %}
-
+Введите искомый навык в адресной строке после /skill/
 <ol>
 {% for cand in found_list %}
-<li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a> skills: {{cand.skills}}</li>
+<li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a> <br> skills: {{cand.skills}}</li>
 {% endfor %}
 </ol>
 

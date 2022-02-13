@@ -55,7 +55,7 @@ def page_skill(skl):
     return render_template('found_skills.html', found_list = found_list)
 
 @app.route('/skill/')
-def page_skill_none(skl):
+def page_skill_none():
     return render_template('found_skills.html', found_list = [])
 
 
