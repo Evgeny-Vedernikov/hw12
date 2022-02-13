@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block main %}
+
 <form action="/search/">
     <input type="text" class="text-input" placeholder="Введите имя для поиска" name="name">
 </form>
@@ -15,5 +12,5 @@
 <li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a></li>
 {% endfor %}
 </ol>
-</body>
-</html>
+
+{% endblock %}

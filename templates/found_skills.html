@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Skill search</title>
-</head>
-<body>
-<!--<form action="/search/">-->
-<!--    <input type="text" class="text-input" placeholder="Введите имя для поиска" name="skill">-->
-<!--</form>-->
+{% extends "base.html" %}
+
+{% block main %}
+
 <ol>
 {% for cand in found_list %}
 <li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a> skills: {{cand.skills}}</li>
 {% endfor %}
 </ol>
-</body>
-</html>
+
+{% endblock %}

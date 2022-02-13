@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>candidate</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block main %}
+
     <p>id: {{id}} </p>
     <p>name:     <b>{{name}}</b></p>
     <p><img src="{{picture}}"></p>
@@ -13,5 +10,5 @@
     <p>age:     {{age}}</p>
     <p>skills:     {{skills}}</p>
     <b></b>
-</body>
-</html>
+
+{% endblock %}

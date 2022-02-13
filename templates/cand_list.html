@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>cand_list</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block main %}
+
 <ol>
 {% for cand in cands %}
 <li> (id={{cand.id}}) <a href = "/candidate/{{cand.id}}">{{cand.name}}</a></li>
 {% endfor %}
 </ol>
-</body>
-</html>
+
+{% endblock %}
