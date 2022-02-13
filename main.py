@@ -13,7 +13,7 @@ def page_profile(id):
     for candidate in candidates:
         if candidate['id'] == int(id):
             return render_template('candidate.html', **candidate)
-    return "<b>Not found!</b>"
+    return "<b>Not  found!</b>"
 
 @app.route('/list/')
 def page_cand_list():
