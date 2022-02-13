@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>candidates-settings</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="templates/css/style.css">
 </head>
 <body>
-    <p>online: {{online}} <br>
+    {% if online %}
+    <b>Приложение работает</b>
+    {% else %}
+    <b>Приложение не работает</b>
+    {% endif %}
+
+    <p>System info:<br>
+    online: {{online}} <br>
     case_sensitive: {{case_sensitive}} <br>
     limit: {{limit}} </p>
-    <a href='/search/?name='>Найти кандидатов по имени</a><br>
-    <a href='/skill/<skill>'>Найти кандидатов по навыкам</a>
 </body>
 </html>
